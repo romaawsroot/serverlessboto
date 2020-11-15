@@ -31,7 +31,7 @@ provider:
 functions:
   numpy:
     handler: handler.lambdapy
-	events:
+    events:
       - http:
           path: /create
           method: get
@@ -41,4 +41,3 @@ plugins:
 custom:
   pythonRequirements:
     dockerizePip: true
-	

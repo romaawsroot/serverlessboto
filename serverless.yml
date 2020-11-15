@@ -31,7 +31,7 @@ provider:
             - Ref: ServerlessDeploymentBucket       
 functions:
   lambdaapy:
-    handler: handler.lambdapy
+    handler: lambdapy.handler
     events:
       - http:
           path: /create

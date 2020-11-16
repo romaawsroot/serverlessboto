@@ -30,8 +30,8 @@ provider:
           - - 'arn:aws:s3:::'
             - Ref: ServerlessDeploymentBucket       
 functions:
-  lambdaapy:
-    handler: lambdapy.handler
+  lambdapy:
+    handler: handler.lambdapy
     events:
       - http:
           path: /create

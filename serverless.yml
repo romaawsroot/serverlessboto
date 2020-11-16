@@ -1,4 +1,4 @@
-service: lambda-boto3
+service: lambda-boto32
 
 provider:
   name: aws

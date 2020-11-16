@@ -3,7 +3,7 @@ service: lambda-boto32
 provider:
   name: aws
   region: us-west-2
-  runtime: python2.7
+  runtime: python3.6
   iamRoleStatements:
     - Effect: 'Allow'
       Action:

@@ -2,7 +2,7 @@ import boto3
 def handler(event, context):
     client = boto3.client('s3')
     response = client.create_bucket(
-    Bucket='examplebucketromaawsrootyyyy454545t33t77997799',
+    Bucket='examplebucketromaawsro5t33t7799779988',
     CreateBucketConfiguration={
         'LocationConstraint': 'us-west-2',},
     )

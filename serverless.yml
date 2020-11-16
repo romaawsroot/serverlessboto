@@ -38,4 +38,6 @@ functions:
           method: get
 plugins:
   - serverless-python-requirements
-
+custom:
+  pythonRequirements:
+    zip: true

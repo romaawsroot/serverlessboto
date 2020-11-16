@@ -1,4 +1,4 @@
-service: lambda-boto34
+service: lambda-boto35
 
 provider:
   name: aws
@@ -31,7 +31,7 @@ provider:
             - Ref: ServerlessDeploymentBucket       
 functions:
   lambdapy:
-    handler: handler.lambdapy
+    handler: lambdapy.handler
     events:
       - http:
           path: /create

@@ -1,5 +1,5 @@
 
-service: project12234
+service: project122347
 
 frameworkVersion: '2'
 
@@ -11,5 +11,9 @@ provider:
 functions:
   lambdapy:
     handler: lambdapy.handler
+    events:
+      - http:
+          path: /create
+          method: get
 plugins:
   - serverless-python-requirements

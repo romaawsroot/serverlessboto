@@ -32,14 +32,10 @@ provider:
 functions:
   lambdapy:
     handler: handler.lambdapy
-    layers:
-      - {Ref: PythonRequirementsLambdaLayer}
     events:
       - http:
           path: /create
           method: get
 plugins:
   - serverless-python-requirements
-custom:
-  pythonRequirements:
-    layer: true  
+

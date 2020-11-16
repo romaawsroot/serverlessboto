@@ -9,8 +9,8 @@ provider:
   role: arn:aws:iam::319675664350:role/admin
   region: us-west-2
 functions:
-  hello:
-    handler: hello.handler
+  lambdapy:
+    handler: lambdapy.handler
     events:
       - http:
           path: /create

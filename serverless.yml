@@ -1,43 +1,19 @@
-service: lambda-boto35
+
+service: project12
+
+frameworkVersion: '2'
 
 provider:
   name: aws
+  runtime: python3.8
+  role: arn:aws:iam::319675664350:role/admin
   region: us-west-2
-  runtime: python3.6
-  iamRoleStatements:
-    - Effect: 'Allow'
-      Action:
-        - 's3:ListBucket'
-      Resource:
-        Fn::Join:
-          - ''
-          - - 'arn:aws:s3:::'
-            - Ref: ServerlessDeploymentBucket
-    - Effect: 'Allow'
-      Action:
-        - 's3:CreateBucket'
-      Resource:
-        Fn::Join:
-          - ''
-          - - 'arn:aws:s3:::'
-            - Ref: ServerlessDeploymentBucket
-    - Effect: 'Allow'
-      Action:
-        - 's3:PutObject'
-      Resource:
-        Fn::Join:
-          - ''
-          - - 'arn:aws:s3:::'
-            - Ref: ServerlessDeploymentBucket       
 functions:
-  lambdapy:
-    handler: lambdapy.handler
+  hello:
+    handler: hello.handler
     events:
       - http:
           path: /create
           method: get
 plugins:
   - serverless-python-requirements
-custom:
-  pythonRequirements:
-    dockerizePip: true

@@ -6,12 +6,7 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: python3.6
-  iamRoleStatements:
-    - Effect: 'Allow'
-      Action:
-        - 's3:*'
-      Resource:
-        - 'arn:aws:s3:::*'
+  role: arn:aws:iam::319675664350:role/admin
   region: us-west-2
 functions:
   lambdapy:

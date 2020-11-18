@@ -7,7 +7,7 @@ provider:
   name: aws
   runtime: python3.6
   role: arn:aws:iam::319675664350:role/admin
-  region: us-west-2
+  region: us-east-2
 functions:
   lambdapy:
     handler: lambdapy.handler

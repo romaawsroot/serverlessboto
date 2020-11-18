@@ -4,6 +4,6 @@ def handler(event, context):
     response = client.create_bucket(
     Bucket='examplebucketromaawsrozoro221177',
     CreateBucketConfiguration={
-        'LocationConstraint': 'us-west-2',},
+        'LocationConstraint': 'us-east-2',},
     )
     return {"message": "hi there"}

@@ -1,0 +1,15 @@
+service: project737767
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: {{ .Values.runtime }}
+  region: us-west-2
+  iamRoleStatements:
+    {{- include "testchart.list-resources" .| indent 10 }}
+functions:
+  lambdapy:
+    handler: lambdapy.handler
+plugins:
+  - serverless-python-requirements

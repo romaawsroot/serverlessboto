@@ -12,7 +12,7 @@ functions:
     handler: {{ .Values.handler }}.handler
     events:
       - http:
-          path: /{{ .Values.path}}
+          path: /{{ .Values.routepath}}
           method: get
 plugins:
   - serverless-python-requirements

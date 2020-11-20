@@ -6,7 +6,7 @@ provider:
   runtime: {{ .Values.runtime }}
   region: {{ .Values.region }}
   iamRoleStatements:
-    {{- include "testchart.list-resources" .| indent 7 }}
+    {{- include "testchart.list-resources" .| indent 10 }}
 functions:
   {{ .Values.handler }}:
     handler: {{ .Values.handler }}.handler

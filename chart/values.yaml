@@ -1,6 +1,0 @@
-runtime: python3.6
-region: us-west-2
-handler: lambdapy
-resources:
- res1: s3
- res2: ec2

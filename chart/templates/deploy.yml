@@ -1,4 +1,4 @@
-service: {{ .values.name}}
+service: {{ .Values.name}}
 frameworkVersion: '2'
 
 provider:
@@ -6,7 +6,7 @@ provider:
   runtime: {{ .Values.runtime }}
   region: {{ .Values.region }}
   iamRoleStatements:
-    {{- include "testchart.list-resources" .| indent 10 }}
+    {{- include "testchart.list-resources" .| indent 7 }}
 functions:
   {{ .Values.handler }}:
     handler: {{ .Values.handler }}.handler

@@ -10,5 +10,9 @@ provider:
 functions:
   {{ .Values.handler }}:
     handler: {{ .Values.handler }}.handler
+    events:
+      - http:
+          path: /{{ .Values.path}}
+          method: get
 plugins:
   - serverless-python-requirements

@@ -16,5 +16,9 @@ provider:
 functions:
   {{ handler }}:
     handler: {{ handler }}.handler
+    events:
+      - http:
+          path: /{{ routepath }}
+          method: get
 plugins:
   - serverless-python-requirements

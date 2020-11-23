@@ -12,6 +12,7 @@ provider:
         Resource:
           - 'arn:aws:{{ r.res }}:::*'
   {% endfor %}
+  
   functions:
    {{ handler }}:
      handler: {{ handler }}.handler

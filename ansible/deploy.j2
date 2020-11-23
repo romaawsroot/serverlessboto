@@ -1,6 +1,5 @@
 service: {{ name }}
 frameworkVersion: '2'
-
 provider:
   name: aws
   runtime: {{ runtime }}
@@ -13,10 +12,10 @@ provider:
         Resource:
           - 'arn:aws:{{ r.res }}:::*'
   {% endfor %}
-functions:
-  {{ handler }}:
-    handler: {{ handler }}.handler
-    events:
+  functions:
+   {{ handler }}:
+     handler: {{ handler }}.handler
+     events:
       - http:
           path: /{{ routepath }}
           method: get

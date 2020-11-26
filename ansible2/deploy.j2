@@ -1,20 +1,28 @@
 service: {{ name }}
 frameworkVersion: '2'
-
 provider:
   name: aws
   runtime: {{ runtime }}
   region: {{ region }}
-  iamRoleStatements:
+ {% if role != 'policy' %}
+ role: {{ role }}
+ {% else%}
+ iamRoleStatements:
   {% for r in resources %}
     - Effect: 'Allow'
         Action:
-          - '{{ r.res }}:*'
+          - '{{ r.policy }}:*'
         Resource:
-          - 'arn:aws:{{ r.res }}:::*'
+          - 'arn:aws:{{ r.policy }}:::*'
   {% endfor %}
+  {% endif %}
+
 functions:
-  {{ handler }}:
-    handler: {{ handler }}.handler
+   {{ handler }}:
+     handler: {{ handler }}.handler
+     events:
+      - http:
+          path: /create
+          method: get
 plugins:
   - serverless-python-requirements

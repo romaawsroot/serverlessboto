@@ -16,7 +16,6 @@ provider:
           - 'arn:aws:{{ r.policy }}:::*'
   {% endfor %}
   {% endif %}
-
 functions:
    {{ handler }}:
      handler: {{ handler }}.handler

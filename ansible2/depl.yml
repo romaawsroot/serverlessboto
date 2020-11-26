@@ -6,4 +6,4 @@
       - values.yml
     tasks:
       - name: Create the Jinja2 based template
-        template: src=./deploy.j2 dest=./serverless.yml
+        template: src=./deploy.j2 dest=../serverless.yml

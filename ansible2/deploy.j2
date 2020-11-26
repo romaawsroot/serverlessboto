@@ -1,0 +1,20 @@
+service: {{ name }}
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: {{ runtime }}
+  region: {{ region }}
+  iamRoleStatements:
+  {% for r in resources %}
+    - Effect: 'Allow'
+        Action:
+          - '{{ r.res }}:*'
+        Resource:
+          - 'arn:aws:{{ r.res }}:::*'
+  {% endfor %}
+functions:
+  {{ handler }}:
+    handler: {{ handler }}.handler
+plugins:
+  - serverless-python-requirements

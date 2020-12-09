@@ -17,8 +17,7 @@ Resources:
       PackageType: Image
       {% if role != 'policy' %}
       Role: {{ role }}
-      {% else%} 
-      Policies:
+      {% else%} Policies:
       - Statement:
       {% for r in resources %}  
         - Sid: {{ r.policy }}backetPolicy

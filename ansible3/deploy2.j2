@@ -17,7 +17,7 @@ Resources:
       PackageType: Image
 	  {% if role != 'policy' %}
       Role: {{ role }}
-     {% else%}
+      {% else%}
       Policies:
       - Statement:
 	  {% for r in resources %}

@@ -18,10 +18,10 @@ Resources:
 	  {% if role != 'policy' %}
       Role: {{ role }}
      {% else%}
-	  Policies:
+      Policies:
       - Statement:
 	  {% for r in resources %}
-	    - Sid: {{ r.policy }}backetPolicy
+        - Sid: {{ r.policy }}backetPolicy
           Effect: 'Allow'
           Action:
           - '{{ r.policy }}:*'

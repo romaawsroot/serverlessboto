@@ -15,14 +15,12 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       PackageType: Image
-	  {% if role != 'policy' %}
+      {% if role != 'policy' %}
       Role: {{ role }}
-      {% else%}
-      
+      {% else%} 
       Policies:
       - Statement:
-	  {% for r in resources %}
-	  
+      {% for r in resources %}  
         - Sid: {{ r.policy }}backetPolicy
           Effect: 'Allow'
           Action:

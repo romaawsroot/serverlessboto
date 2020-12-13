@@ -18,14 +18,12 @@ Resources:
       Role: {{ role }}
         {% else%}      Policies:
       - Statement:
-      {% for r in resources %}
           Effect: 'Allow'
           Action:
-{% for i in r.policy %}
-          - '{{ i.pol }}'
+      {% for r in resources %}
+          - '{{ r.policy }}'
       {% endfor %}
           Resource: '*'
-      {% endfor %}
   {% endif %}       Events:
         {{ eventname }}:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api

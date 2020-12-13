@@ -9,7 +9,6 @@ Description: >
 Globals:
   Function:
     Timeout: 3
-
 Resources:
   {{ functionname }}:
     Type: AWS::Serverless::Function
@@ -17,15 +16,17 @@ Resources:
       PackageType: Image
       {% if role != 'policy' %}
       Role: {{ role }}
-      {% else%}Policies:
+        {% else%}      Policies:
       - Statement:
-      {% for r in resources %}  - Sid: {{ r.policy }}backetPolicy
+      {% for r in resources %}
           Effect: 'Allow'
           Action:
-          - '{{ r.policy }}:*'
+{% for i in r.policy %}
+          - '{{ i.pol }}'
+      {% endfor %}
           Resource: '*'
       {% endfor %}
-{% endif %}Events:
+  {% endif %}       Events:
         {{ eventname }}:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:

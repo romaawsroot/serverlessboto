@@ -1,0 +1,11 @@
+---
+  - name: Demonstrating variables in Jinja2 Loops
+    hosts: localhost
+    connection: local
+    vars_files:
+      - values.yml
+    tasks:
+      - name: Create samconfig  Jinja2 based template
+        template: src=./deploy.j2 dest=../samlambda/samconfig.toml
+      - name: Create  sam template
+        template: src=./deploy2.j2 dest=../samlambda/template.yaml

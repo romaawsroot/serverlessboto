@@ -1,0 +1,52 @@
+#jinja2: lstrip_blocks: True
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  {{ name }}
+
+  Sample SAM Template for sam78
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  {{ functionname }}:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      {% if role != 'policy' %}
+      Role: {{ role }}
+        {% else%}      Policies:
+      - Statement:
+          Effect: 'Allow'
+          Action:
+      {% for r in resources %}
+          - '{{ r.policy }}'
+      {% endfor %}
+          Resource: '*'
+  {% endif %}      Events:
+        {{ eventname }}:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /{{ routepath }}
+            Method: get
+    Metadata:
+      DockerTag: python3.6-v1
+      DockerContext: ./hello_world
+      Dockerfile: Dockerfile
+
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/{{ routepath }}/"
+  {{ functionname }}:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt {{ functionname }}.Arn
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt {{ functionname }}.Arn
